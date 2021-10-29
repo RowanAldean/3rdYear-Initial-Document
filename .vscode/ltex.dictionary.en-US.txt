@@ -8,3 +8,9 @@ programmes
 TrueCoach
 analyse
 Maths
+programme
+decompilation
+utilise
+summarise
+Emphasise
+personalise

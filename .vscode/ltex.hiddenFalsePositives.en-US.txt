@@ -1,0 +1,1 @@
+{"rule":"ALL_OF_THE","sentence":"^\\QFeatures/Functionality The PJFPerformance app includes all of the following features: Track coach's release of phased training (upcoming/past workouts).\\E$"}
