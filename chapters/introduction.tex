@@ -1,0 +1,96 @@
+% !TEX root = ../thesis.tex
+\chapter{Introduction}
+\raggedright
+\label{chap:intro}
+This document will outline the plan for development of a functional codebase for a fitness application.
+This process, herein referred to as ``the project'' is different to the application(s) produced as a result.
+The main difference is that the project is not concerned with the deployment, maintenance and future updates
+of the fitness application and no additional academic benefit is gained from creating the
+infrastructure or platform-specific functionality. This is to say that the creation
+of \textbf{both} a mobile and a web application is not needed for the project but makes up
+a core offering of the product for end users following deployment.
+\par
+\noindent
+A \textbf{mobile} application will be produced during the project, which will have 2 main use cases:
+\begin{enumerate}
+	\item A user will be able to pay (via monthly installments or upfront) for a
+	      fitness plan; where they can monitor, make notes and track their
+	      progress and routine via a calendar.
+	\item A user can create their own fitness plan by producing their own routine using
+	      available exercises on the app - the additional functions such as the calendar remain
+	      the same.
+\end{enumerate}
+\pagebreak
+\section{Motivations}
+\label{sec:intro_motivation}
+\hyphenpenalty=100000
+The motivation for the project began following an initial consultation with a Californian
+NBA-level basketball athletic trainer who was looking for a bespoke application
+to reduce his business expenses. Initially, 4 days of planning and a 40-minute discussion
+took place before the business decided that the costs associated with building this platform
+are not a priority for the time being.
+\par
+In the process of considering the development of said fitness platform, I spoke to developers
+working with smaller high-level sports trainers regarding the technology used and their clients
+future plans. At this time fitness influencers Krissy Cela and Jack Bullimore had proven the concept
+a year earlier with the rollout of ``\href{https://toneandsculpt.app/}{Tone and Sculpt}'' -
+grossing over GBP 1 million in the 8 months following its January 2019 release \cite{tonensculpt}.
+My initial desire to pursue a project in this space grew more after hearing the story and approach taken by
+``Tone and Sculpt'' on the Diary of a CEO podcast \cite{krissy-podcast}.
+\par
+In the world of athletic sports there is currently no viable, consistent and widely used means
+of measuring vertical leap besides
+\href{https://www.topendsports.com/testing/products/vertical-jump/vertec.htm}{the Vertec}.
+Prices on these devices can be as high as £500 and cheaper alternatives commonly found
+at a youth/amateur level - that involve markings on walls - don't allow for an approach
+jump (without the risk of hitting the wall). This is being mentioned because a large motivation for the jump calculator
+functionality is to allow an easy and accessible means of measuring a users vertical leap
+progress. Naturally, the use of a smartphone for measurement is not completely accurate but
+will provide sufficient consistency (given the user's setup) and this can be used to monitor
+improvement.
+\par
+From a trainers' perspective,  using PDFs to release fitness plans is cumbersome
+and involves finding a suitable workflow and rollout. Further to the fact that they're
+easily copied and distributed. Existing white label mobile app solutions to these issues
+don't offer much customization beyond simple re-branding; many don't support video.
+Following discussion with fitness trainers in various countries (including the USA, UAE and UK)
+I concluded that this is something that needs to be addressed. Many robo-fitness apps
+exist for end users, but few include real trainers and even less give
+freedom to the administrator.
+\par
+In summary, the motivation for the project is to give a customizable fitness planning
+solution to those interested in monitoring their training. This solution should be
+usable by administrators (trainers/teams), average ``gym go-ers'' and
+highly trained athletes alike. The global fitness app market size
+was valued at USD 4.4 billion in 2020 and is expected to expand at a
+compound annual growth rate (CAGR) of 21.6\% from 2021 to 2028 \cite{fitness-app-market-size}.
+We can see that the total addressable market is huge and set to grow quickly,
+if this is any indicator of the volume of potential users looking for a fitness solution then the proposed
+project should prove tremendously useful at solving the aforementioned problems.
+\pagebreak
+
+\section{Overview \& Aims}
+\label{sec:intro_overview}
+The projects aims include the following - some of these aims will be broken down into
+succinct functional and non-functional requirements in \cref{chap:requirements}:
+\begin{itemize}
+	\item The ability for a user to plan their workouts on a calendar.
+	\item The ability for a user to track the progress of a workout.
+	\item The ability for a user to measure their vertical leap using their phone.
+	\item Allow users to keep track of their progress in relevant areas
+	      such as weight, strength measurements etc. more efficiently than traditional methods.
+	\item Allow trainers to comfortably deliver fitness plans to
+	      clients without a steep technical learning curve.
+\end{itemize}
+The core overview of the project is that we're looking to develop a mobile application that
+allows a user to register an account before having the ability to follow/create a fitness plan
+and provide relevant tools for consistency and the successful reach of a users goals
+(irrespective of their background). The project aims to focus on the 
+end user\footnote{The user training using the app} however considerations will be made for 
+the complete implementation of an administrator role (time permitting).
+\par
+The project is concerned with the ability to solve both parties problems through the development
+of the application, but the primary focus is on the development of the core functionality
+and the vertical jump calculator. From a business perspective we can consider the jump calculator
+the unique selling point of \textit{the product} and
+a complex component of \textit{the project}.
