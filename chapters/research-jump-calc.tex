@@ -20,7 +20,54 @@ and not a concrete result. There will be some deviation from other measurements 
 Below we'll be considering the mathematics involved in finding vertical jump height using
 \textbf{only smartphone video footage}.
 \par
-\todo{Read link below and add content here}
+To explain the forces demonstrated in a countermovement jump (CMJ)\footnote{A vertical jump test performed by having an athlete quickly squat to a self-selected depth and then jump as high as possible.}
+we'll be considering the 5 phases of action involved (\cref{fig:jump-phases}).
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{jump-maths/phases-of-cmj.png}
+	\caption{The sequence of actions involved in a CMJ.}
+	\label{fig:jump-phases}
+\end{figure}
+\vspace*{-5mm}
+\begin{figure}[H]
+	\centering
+	\input{graphics/jump-maths/force-plate-graph.tex}
+	\caption{Ground reaction forces during vertical jump.}
+	\label{fig:jump-phases-graph}
+\end{figure}
+\par
+We'll use a simplified example of a force plate analysis (\todo[color=purple]{reference graph}). In reality the force curve won't be so smooth
+but this should demonstrate the phases quite clearly. 
+
+
+
+\[\displaystyle F = m * g\]
+\[
+	\displaystyle
+	\begin{aligned}
+	981 N &= m * 9.81 m/s^2 \\ \\
+	=> m &= \frac{981N}{9.81 m/s^2} = 100kg
+	\end{aligned}	
+\]
+
+$$F_{Jumper} = F_{GRF} - F_{Gravity} <=0$$
+
+\[F = m a => F t = m a t
+\]
+Because F is not constant but a function of time, and $v =a t$:
+\par
+$$\displaystyle
+=> \int_{t_1}^{t_2} F_{Jumper}(t) \mathrm{d}t = m v$$
+
+\[\displaystyle
+\begin{aligned}
+\int_{t_1}^{t_2} F(t) \mathrm{d}t = m v\\ \\
+=> -70 N s = 100kg * v\\
+=> v = -70 N s / 100kg = -0.7 m/s
+\end{aligned}
+\]
+
+
 \subsection{FitnessMeter - Test \& Measure}
 \label{research:fitness-meter}
 \subsection{What's My Vertical?}
