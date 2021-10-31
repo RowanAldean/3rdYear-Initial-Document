@@ -1,1 +1,3 @@
 {"rule":"ALL_OF_THE","sentence":"^\\QFeatures/Functionality The PJFPerformance app includes all of the following features: Track coach's release of phased training (upcoming/past workouts).\\E$"}
+{"rule":"UNIT_SPACE","sentence":"^\\QThe force plate (\\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q) is registering forces lower than 981N \\E(?:Dummy|Ina|Jimmy-)[0-9]+$"}
+{"rule":"UNIT_SPACE","sentence":"^\\QWith this, we can conclude that: \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q Therefore, our athlete reaches a peak velocity of -0.7m/s during the countermovement phase.\\E$"}

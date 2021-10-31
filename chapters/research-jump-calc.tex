@@ -17,55 +17,87 @@ and not a concrete result. There will be some deviation from other measurements 
 
 \subsection{Maths behind calculating vertical jump using video}
 \label{research:jump-maths}
-Below we'll be considering the mathematics involved in finding vertical jump height using
+Below we'll be considering the physics \cite{hoopsgeek-maths} involved in finding vertical jump height using
 \textbf{only smartphone video footage}.
 \par
 To explain the forces demonstrated in a countermovement jump (CMJ)\footnote{A vertical jump test performed by having an athlete quickly squat to a self-selected depth and then jump as high as possible.}
 we'll be considering the 5 phases of action involved (\cref{fig:jump-phases}).
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.5\linewidth]{jump-maths/phases-of-cmj.png}
-	\caption{The sequence of actions involved in a CMJ.}
-	\label{fig:jump-phases}
+	\begin{minipage}[c]{0.5\textwidth}
+		\caption{Motion phase of countermovement jump (CMJ). 1: Rest. Before jump. \linebreak2: Countermovement. 3: Push to ground. \linebreak4: Jump. Fly. 1 * : Rest. Land. \linebreak Vertical position of torso is y position \cite{jumping-phases-picture}.}
+		\label{fig:jump-phases}
+	\end{minipage}%
+	\begin{minipage}[c]{0.5\textwidth}
+		\includegraphics[width=\textwidth]{jump-maths/phases-of-cmj.png}
+	\end{minipage}
 \end{figure}
 \vspace*{-5mm}
 \begin{figure}[H]
 	\centering
 	\input{graphics/jump-maths/force-plate-graph.tex}
+	\vspace*{-5mm}
 	\caption{Ground reaction forces during vertical jump.}
 	\label{fig:jump-phases-graph}
 \end{figure}
+\pagebreak
+
+We'll be using the above, simplified force plate analysis (\cref{fig:jump-phases-graph}),
+to delve further into the phases of a jump and the mathematics. 
+In reality the force curve wouldn't be so smooth
+but this should demonstrate the phases quite clearly.
 \par
-We'll use a simplified example of a force plate analysis (\todo[color=purple]{reference graph}). In reality the force curve won't be so smooth
-but this should demonstrate the phases quite clearly. 
-
-
-
-\[\displaystyle F = m * g\]
+\textbf{Phase 1: Rest (Pre-jump)}
+\par
+Before jumping we can see a flat line at $981$ Newton (\cref{fig:jump-phases-graph}). The athlete isn't jumping, but this is gravity doing it's
+work. It's easily explained as $F=m*g$, where $m$ is the mass of the athlete and
+$g$ is the acceleration of earth's gravity. $F$ is the force needed to counter the effects of gravity. We know that $g=9.81m/s^2$ on earth, thus:
 \[
 	\displaystyle
 	\begin{aligned}
-	981 N &= m * 9.81 m/s^2 \\ \\
+	981N &= m * 9.81 m/s^2 \\
 	=> m &= \frac{981N}{9.81 m/s^2} = 100kg
 	\end{aligned}	
 \]
-
-$$F_{Jumper} = F_{GRF} - F_{Gravity} <=0$$
-
-\[F = m a => F t = m a t
-\]
-Because F is not constant but a function of time, and $v =a t$:
+Here you can see that the force plate is basically acting as a weighing scale, showing
+the force gravity exerts on the athlete.
 \par
+\textbf{Phase 2: Countermovement}
+\par
+As seen in \cref{fig:jump-phases}, the countermovement involves
+the bending of the knees and typically swinging of the arms to lower the center
+of gravity before the jump. The force plate (\cref{fig:jump-phases-graph}) is 
+registering forces lower than 981N, which means the athlete is accelerating
+in a downward movement.
+\par
+Recall Newton's 3rd Law of motion; 
+which states whenever two objects interact, they exert equal and opposite forces on each other.
+Knowing the above, we can define Ground Reaction Force (GRF) as ``the force exerted by the ground
+on a body in contact with it''. 
+We can describe the forces acting at this time as follows:
+$$F_{Jumper} = F_{GRF} - F_{Gravity} <=0$$
+We can also use the analysis (\cref{fig:jump-phases-graph}) to find
+the speed the athlete is moving at before the jump. We know that
+$F=ma$ (mass * acceleration), and force is happening over time.
+Thus, $Ft=mat$.  
+We also know force isn't a constant, it's a function of time and that we can define velocity as $v=at$;
+so our formula is:
 $$\displaystyle
-=> \int_{t_1}^{t_2} F_{Jumper}(t) \mathrm{d}t = m v$$
-
-\[\displaystyle
-\begin{aligned}
-\int_{t_1}^{t_2} F(t) \mathrm{d}t = m v\\ \\
-=> -70 N s = 100kg * v\\
-=> v = -70 N s / 100kg = -0.7 m/s
-\end{aligned}
-\]
+\int_{t_1}^{t_2} F_{Jumper}(t) \mathrm{d}t = mv$$
+where $F_{Jumper}(t)$ is the difference between the GRF and gravity.
+\pagebreak
+The integral can be calculated from the force plate data. The downward impulse\footnote{Impulse is the integral of a force.} made by
+the athlete is shown in the graph (\cref{fig:jump-phases-graph}) as the blue area
+below the line representing gravity.
+\par
+We've assumed the integral (impulse) is -70Ns\footnote{Newton seconds are the units of impulse.}. 
+With this, we can conclude that:
+\begin{align*}
+& \int_{t_1}^{t_2} F(t) \mathrm{d}t = m v \\
+&=> -70 N s = 100kg * v \\
+&=> v = -70 N s / 100kg = -0.7 m/s
+\end{align*}
+Therefore, our athlete reaches a peak velocity of -0.7m/s during the countermovement phase.
 
 
 \subsection{FitnessMeter - Test \& Measure}

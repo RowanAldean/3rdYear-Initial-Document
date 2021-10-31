@@ -1,153 +1,156 @@
-\resizebox{\linewidth}{!}{
-\begin{tikzpicture}
-    \centering
-    \begin{axis}[
-            axis lines = left,
-            xlabel = {time in seconds (s)},
-            ylabel = {Force in Newtons},
-            xmin=-1, xmax=1,
-            ymin=0, ymax=2600,
-            xtick={-1.0,-0.5,0.0,0.5,1.0},
-            ytick={500,1000,1500,2000},
-            axis line style={opaque},
-            label style={font=\tiny},
-            ticklabel style={font=\tiny},
-            legend style={draw=none},
-        ]
+\resizebox{0.7\linewidth}{!}{
+    \noindent
+    \begin{tikzpicture}[trim left=0cm]
+        \centering
+        \begin{axis}[
+                axis on top,
+                axis lines = left,
+                xlabel = {time in seconds (s)},
+                ylabel = {Force in Newtons},
+                xmin=-1, xmax=1,
+                ymin=0, ymax=2600,
+                xtick={-1.0,-0.5,0.0,0.5,1.0},
+                ytick={500,1000,1500,2000},
+                axis line style={opaque},
+                label style={font=\tiny},
+                ticklabel style={font=\tiny},
+                tick style={draw=none},
+                legend style={draw=none},
+            ]
 
-        % Define axis lines
-        % Gravity line defined
-        \path [
-            name path=axis,
-        ]
-        (axis cs:-1,0) -- (axis cs:1,0);
-
-        
-        % Gravity line defined
-        \addplot [
-            name path=gravity,
-            color=gray,
-            fill=gray!10!,
-            draw=none,
-            area legend,
-        ]
-        {1000};
-
-        %Below the main force of jumper is defined
-        \addplot [
-            name path=A,
-            domain=-1:1,
-            samples=11,
-            color=red,
-            smooth,
-            line width=1pt,
-            tension={0.15}
-        ]
-        coordinates {
-            (-1,1000)(-0.6,1000)(-0.5,500)(-0.4,1000)(-0.3,1500)(-0.2,2000)(0.0,0.0)(0.5,0.0)(0.6,2100)(0.7,1250)(0.8,1600)(0.9,1000)(1,1000)
-        };
-
-        \addplot [
-            name path=phase2end,
-            domain=-0.6:-0.4,
-            samples=11,
-            opacity=0,
-        ]
-        coordinates {
-            (-0.4,1000)(-0.2,2000)(0.0,0.0)(0.5,0.0)(0.6,2100)(0.7,1250)(0.8,1600)(0.9,1000)(1,1000)
-        };
-
-        \addplot [
-            name path=phase3start,
-            domain=-0.4:-0.2,
-            samples=11,
-            opacity=0,
-        ]
-        coordinates {
-            (-0.25,1000)(-0.25,1750)(-0.2,2000)(0.0,0.0)(0.5,0.0)(0.6,2100)(0.7,1250)(0.8,1600)(0.9,1000)(1,1000)
-        };
-
-        \addplot [
-            name path=phase4start,
-            domain=-0.4:-0.2,
-            samples=11,
-            opacity=0,
-        ]
-        coordinates {
-            (-0.1,1000)(0.0,0.0)(0.5,0.0)(0.6,2100)(0.7,1250)(0.8,1600)(0.9,1000)(1,1000)
-        };
+            % Define axis lines
+            % Gravity line defined
+            \path [
+                name path=axis,
+            ]
+            (axis cs:-1,0) -- (axis cs:1,0);
 
 
-        \addplot [
-            domain=0:0.5,
-            samples=11,
-            color=red,
-            line width=2pt,
-        ]
-        coordinates {
-            (0,0)(0.5,0)
-        };
+            % Gravity line defined
+            \addplot [
+                name path=gravity,
+                color=gray,
+                fill=gray!10!,
+                draw=none,
+                area legend,
+            ]
+            {1000};
 
-        % Coloring the phase 1 decline blue
-        \addplot [
-            fill=blue,
-            fill opacity = 0.2,
-        ]
-        fill between[
-            of=A and phase2end
-        ];
-        % Coloring the phase 1 incline orange
-        \addplot [
-            fill=orange,
-            fill opacity = 0.2,
-        ]
-        fill between[
-            of=phase2end and phase3start
-        ];
-        % Coloring the phase 3 decline orange
-        \addplot [
-            fill=yellow,
-            fill opacity = 0.2,
-        ]
-        fill between[
-            of=phase3start and phase4start
-        ];
-        % Coloring final phase
-        \addplot [fill=green,fill opacity = 0.2] fill between[
-            of=A and gravity, soft clip={domain=0.55:1}
-        ];
+            %Below the main force of jumper is defined
+            \addplot [
+                name path=A,
+                domain=-1:1,
+                samples=11,
+                color=red,
+                smooth,
+                line width=1pt,
+                tension={0.15}
+            ]
+            coordinates {
+                    (-1,1000)(-0.6,1000)(-0.5,500)(-0.4,1000)(-0.3,1500)(-0.2,2000)(0.0,0.0)(0.5,0.0)(0.6,2100)(0.7,1250)(0.8,1600)(0.9,1000)(1,1000)
+                };
 
-        % Coloring the gravity line
-        \addplot [gray!10!] fill between[
-            of=A and axis, soft clip={domain=-1:-0.4}
-        ];
-        \addplot [gray!10!] fill between[
-            of=gravity and axis, soft clip={domain=-0.4:-0.1}
-        ];
-        \addplot [gray!10!] fill between[
-            of=A and axis, soft clip={domain=-0.1:0.55}
-        ];
-        \addplot [gray!10!] fill between[
-            of=gravity and axis, soft clip={domain=0.55:1}
-        ];
+            \addplot [
+                name path=phase2end,
+                domain=-0.6:-0.4,
+                samples=11,
+                opacity=0,
+            ]
+            coordinates {
+                    (-0.4,1000)(-0.35,1250)(-0.205,2000)(0.0,0.0)(0.5,0.0)(0.6,2100)(0.7,1250)(0.8,1600)(0.9,1000)(1,1000)
+                };
 
-        \legend{
-            \tiny Force of Gravity,
-            \tiny Force of Jumper Movement,
-        }
+            \addplot [
+                name path=phase3start,
+                domain=-0.4:-0.2,
+                samples=11,
+                opacity=0,
+            ]
+            coordinates {
+                    (-0.25,1000)(-0.25,1750)(-0.205,2000)(0.0,0.0)(0.5,0.0)(0.6,2100)(0.7,1250)(0.8,1600)(0.9,1000)(1,1000)
+                };
+
+            \addplot [
+                name path=phase4start,
+                domain=-0.4:-0.2,
+                samples=11,
+                opacity=0,
+            ]
+            coordinates {
+                    (-0.1,1000)(0.0,0.0)(0.5,0.0)(0.6,2100)(0.7,1250)(0.8,1600)(0.9,1000)(1,1000)
+                };
 
 
-        % The phase 1 bending label (70Ns)
-        \addplot[mark=none, color = blue] coordinates {(-0.475,930)} node[pin=100:{\tiny 70Ns}]{} ;
-        % Phase grey marks
-        \addplot[mark=*, color=black!80!, draw opacity = 0] coordinates {(-0.6,1000)(-0.4,1000)(-0.26,1750)(0,0)(0.5,0)};
-        % The phase 2 label (70Ns)
-        \addplot[mark=none, color = orange] coordinates {(-0.31,1250)} node[pin=100:{\tiny 70Ns}]{} ;
-        % The phase 3 label (245Ns)
-        \addplot[mark=none, color = yellow] coordinates {(-0.16,1250)} node[pin=80:{\tiny 245Ns}]{} ;
-        % The phase 4 label (245Ns)
-        \addplot[mark=none, color = green] coordinates {(0.600,1250)} node[pin=100:{\tiny 245Ns}]{} ;
+            \addplot [
+                domain=0:0.5,
+                samples=11,
+                color=red,
+                line width=2pt,
+            ]
+            coordinates {
+                    (0,0)(0.5,0)
+                };
 
-        
-    \end{axis}
-\end{tikzpicture}}
+            % Coloring the phase 1 decline blue
+            \addplot [
+                fill=blue,
+                fill opacity = 0.2,
+            ]
+            fill between[
+                    of=A and phase2end
+                ];
+            % Coloring the phase 1 incline orange
+            \addplot [
+                fill=orange,
+                fill opacity = 0.2,
+            ]
+            fill between[
+                    of=phase2end and phase3start
+                ];
+            % Coloring the phase 3 decline orange
+            \addplot [
+                fill=yellow,
+                fill opacity = 0.2,
+            ]
+            fill between[
+                    of=phase3start and phase4start
+                ];
+            % Coloring final phase
+            \addplot [fill=green,fill opacity = 0.2] fill between[
+                    of=A and gravity, soft clip={domain=0.55:1}
+                ];
+
+            % Coloring the gravity line
+            \addplot [gray!10!] fill between[
+                    of=A and axis, soft clip={domain=-1:-0.4}
+                ];
+            \addplot [gray!10!] fill between[
+                    of=gravity and axis, soft clip={domain=-0.4:-0.1}
+                ];
+            \addplot [gray!10!] fill between[
+                    of=A and axis, soft clip={domain=-0.1:0.55}
+                ];
+            \addplot [gray!10!] fill between[
+                    of=gravity and axis, soft clip={domain=0.55:1}
+                ];
+
+            \legend{
+                \tiny Force of Gravity,
+                \tiny Force of Jumper Movement,
+            }
+
+
+            % The phase 1 bending label (70Ns)
+            \addplot[mark=none, color = blue] coordinates {(-0.475,930)} node[pin=100:{\tiny 70Ns}]{} ;
+            % Phase grey marks
+            \addplot[mark=*, color=black!80!, draw opacity = 0] coordinates {(-0.6,1000)(-0.4,1000)(-0.26,1750)(0,0)(0.5,0)};
+            % The phase 2 label (70Ns)
+            \addplot[mark=none, color = orange] coordinates {(-0.31,1250)} node[pin=100:{\tiny 70Ns}]{} ;
+            % The phase 3 label (245Ns)
+            \addplot[mark=none, color = yellow] coordinates {(-0.16,1250)} node[pin=80:{\tiny 245Ns}]{} ;
+            % The phase 4 label (245Ns)
+            \addplot[mark=none, color = green] coordinates {(0.600,1250)} node[pin=100:{\tiny 245Ns}]{} ;
+
+
+        \end{axis}
+    \end{tikzpicture}}
