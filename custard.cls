@@ -212,7 +212,8 @@
     \@studentnumber
 
     \ifdraftdoc
-      \vspace{10mm}      
+      \vspace{10mm} 
+      \todo[color=blue!50!, inline]{read remove line comment in thesis.tex}	     
        {\Huge\bfseries \textcolor{red}{Thesis Draft: \today}\\}
        \vspace{10mm}
     \else

@@ -98,7 +98,122 @@ With this, we can conclude that:
 &=> v = -70 N s / 100kg = -0.7 m/s
 \end{align*}
 Therefore, our athlete reaches a peak velocity of -0.7m/s during the countermovement phase.
+\par
+\textbf{Phase 2.5: Deceleration}
+\par
+Now we've seen where GRFs are lower than expected due to gravity - we must look for the period
+where our athlete has to decelerate the downward movement (pause) before launching up (\cref{fig:jump-phases}).
+This should be an equally big impulse to that found above but in the opposite direction.
+We can describe this as:
+\[\displaystyle \int_{t_2}^{t_3} F_{Jumper}(t) \mathrm{d}t = 70 Ns\]
+Because we know $F(t)$ and $t_2$, the algorithm of the force plate analysis
+now looks for $t_3$ so the impulse equals 70Ns.
+\par
+On our graph (\cref{fig:jump-phases-graph}) we have pictured this -
+we are looking for the blue and orange areas to be the same size.
+\par
+\textbf{Phase 3: Push to ground}
+\par
+The athlete then generates force in preparation for takeoff before the GRFs register as 0
+(when they are in flight). They reach some of the peak forces seen.
+To assess the velocity during takeoff we use the same technique as Phase 2:
+\[
+\displaystyle
+\int_{t_3}^{t_4} F_{Jumper}(t) \mathrm{d}t = mv	
+\]
+Pictured in our graph (\cref{fig:jump-phases-graph}) as the yellow area.
+\pagebreak
 
+The force plate graph detects 245Ns, so we can determine initial velocity as follows:
+\vspace{-3mm}
+\begin{align*}
+	& 245 N s = 100kg * v \\
+	&=> v = 245 N s / 100kg = 2.45 m/s
+\end{align*}
+\vspace{-5mm}
+
+\textbf{Phase 4: Jump. Flight!}
+Here the athlete can't control their velocity any longer; their jump height
+is determined by the speed built before and during takeoff. Only gravity is acting on them,
+bringing them back to the ground.
+\par
+We've determined initial velocity was $v(0)=2.45 m/s^2$ and
+the gravity of earth has an acceleration of $a=9.81m/s^2$. Plus, the peak
+of the jump must have a vertical velocity of zero: $v(t_{peak})=0$.
+\par
+Using the initial velocity and earths gravity we can find velocity at any given time using:
+\vspace{-5mm}
+\begin{center}
+$
+\displaystyle
+v(t)=v(0) -a * t
+$
+\end{center}
+\vspace{-5mm}
+Thus we can find the velocity at the peak of the jump using:
+\[\displaystyle
+\begin{aligned}
+v(t_{peak}) &= v(0) - a * t_{peak} \\
+=> 0 &= v(0) - a * t_{peak} \\
+=> t_{peak} &= \frac{v(0)}{a} = \frac{2.45m/s}{9.81m/s^2} = 0.25s
+\end{aligned}\]
+With the knowledge of $v(t)$ during every moment and knowing the peak of the jump
+was 0.25s, we can calculate the jump height as the integral of velocity over the time
+it takes to reach the peak of the jump:
+\[\displaystyle
+\begin{aligned}
+h_{jump} &= \int_0^{\frac{v(o)}{a}} \bigg( v(o) - at \bigg) \ \mathrm{d}t= \\
+& = v(o)t \ - \ \frac{1}{2} at^2 \ \bigg|_0^{\frac{v(0)}{a}} \\
+& = v(0) \left(\frac{v(0)}{a}\right) - \frac{1}{2} a \left(\frac{v(0)}{a}\right)^2 \\
+& = \frac{v(0)^2}{a} \ - \ \frac{1}{2} \frac{v(0)^2}{a} \\
+=> h_{jump} \ &= \ \frac{1}{2} \frac{v(0)^2}{a} 
+\end{aligned}\]
+This leaves us with a simple formula for finding jump height
+\textit{when we know the initial velocity}. 
+For our force plate analysis (\cref{fig:jump-phases-graph}) we get
+\[
+	\begin{aligned}
+		h_{jump} = \frac{1}{2} \frac{(2.45m/s)^2}{9.81 m/s^2} = 0.306m			
+	\end{aligned}
+\]
+
+Because we only need the initial velocity of an athlete to satisfy our formula,
+we don't have to rely on a force plate and expensive equipment.
+We simply have to find the initial velocity for a jump that takes 0.5s.
+\par
+If someone jumps 0.5m high, they must also fall 0.5m after they peak. We have established
+velocity is a linear function ($v=at$), thus we can demonstrate the athletes peak
+is at the exact middle of the jump. Formally:
+\vspace{-3mm}
+\[
+	\displaystyle
+	t_{peak} = 0.5 * t_{hangtime}	
+\]
+Thus to find the jump height of someone who jumps for 0.5s, we can calculate
+the distance of free fall in 0.25s!
+\[
+	\displaystyle
+	\begin{aligned}
+	S &= \int_0^{\frac{1}{2} t_{hangtime}} v(t) \; dt \\
+	&= \int_0^{\frac{1}{2} t_{hangtime}} a * t \; dt \\
+	&= \frac{1}{2} a t^2 \; \bigg|_0^{\frac{1}{2}t_{hangtime}} \\
+	&= \frac{1}{2} a \left( \frac{1}{2} t_{hangtime} \right)^2 \\
+	&= \frac{1}{8} a \: t_{hangtime}^2 \\
+	\end{aligned}	
+\]
+In the case of a 0.5s hangtime, this gives us (as before with the force plate data):
+\[
+\begin{aligned}
+	S = \frac{1}{8} a \: t_{hangtime}^2 = \frac{1}{8} * 9.81m/s^2 * 0.5^2 = 0.306m
+\end{aligned}	
+\]
+\textbf{\underline{This formula is the crucial component to developing this feature.}} 
+We won't be looking
+at the physics of ``the landing'' in this document as it is not directly relevant.
+However it is worth noting that to counteract the forces created during impact,
+the athlete braces themselves and absorbs force - this is notable as the green area
+in the graph has a value of 245Ns exactly like the yellow area.
+\pagebreak
 
 \subsection{FitnessMeter - Test \& Measure}
 \label{research:fitness-meter}
