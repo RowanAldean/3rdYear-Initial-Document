@@ -217,17 +217,63 @@ in the graph has a value of 245Ns exactly like the yellow area.
 
 \subsection{FitnessMeter - Test \& Measure}
 \label{research:fitness-meter}
+FitnessMeter is an iOS (Apple) exclusive mobile app, used for 
+``fitness testing and athletic performance evaluation'' \cite{fitness-meter}.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.2\textwidth]{graphics/fitnessmeter/jumpcalc.jpg}
+	\caption{The FitnessMeter vertical jump calculator in use.}
+	\label{fig:fitnessmeter-jump}	
+\end{figure}
+\vspace{-5mm} 
+The app uses the change in position of the torso (\cref{fig:fitnessmeter-jump}) to determine jump height. Seemingly by comparing this to their position
+in the initial start. Our app aims to comfortably work even when only the feet are in frame. In traditional vertical jump 
+tests the athlete maintains straight legs and so the issue of raising the legs/bending the knees to artificially increase
+hangtime is not a major concern. \textit{Directions in our app will discourage this technique and establish how to best
+find accurate results.}
+
 \subsection{What's My Vertical?}
 \label{research:whats-my-vert}
+Another iOS only application with poor UI. This application uses the same methods we plan on using; however, the
+app serves no purpose beyond the vertical jump measurement and ``dunk calculator'' math.
+It lacks further functionality and training support.
+\vspace{-5mm}
+\begin{figure}[H]
+	\centering
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[width=0.4\textwidth]{graphics/whatsmyvert/jumpcalc.jpg}
+		\caption{The jump calculator functionality in use.}
+		\label{fig:whatsmyvert-jump}
+	\end{minipage}%
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[width=0.4\textwidth]{graphics/whatsmyvert/dunkcalcmaths.jpg}
+		\caption{The dunk calculator math being used for estimation.}
+		\label{fig:whatsmyvert-math}
+	\end{minipage}%
+\end{figure}
+\pagebreak
+
+As mentioned, we intend on using a very similar system to what's seen here (\cref{fig:whatsmyvert-jump}).
+We will consider having a dunk math calculator (\cref{fig:whatsmyvert-math}) as an enhancement and extra feature however this doesn't seem
+very useful for our project as the fitness application is not sport specific. Whilst the app will be usable
+by basketball players, having basketball specific functionality may limit user growth and alienate
+average enthusiasts.
+
 \subsection{My Jump 2}
 \label{research:my-jump}
-
-
-\begin{itemize}
-	\item \href{https://www.thehoopsgeek.com/measurement-app/#manual}{HoopsGeek App}
-	\item \href{https://apps.apple.com/us/app/fitnessmeter-test-measure/id477488986}{Old ass iphone app}
-	\item \href{https://apps.apple.com/gb/app/my-jump-2/id1148617550#?platform=iphone}{MyJump2 itunes}
-	\item \href{https://www.youtube.com/watch?v=tIBiHDyev6w}{MyJump2 in use}
-	\item \href{https://www.topendsports.com/testing/products/vertical-jump/video.htm}{Maths}
-	\item \href{https://www.thehoopsgeek.com/the-physics-of-the-vertical-jump/}{Detailed maths courtesy of thehoopsgeek - legend}
-\end{itemize}
+Finally we have looked at ``MyJump 2'' - a cross-platform sports science validated calculator app.
+It's been proven to be ``valid, reliable and useful'' \cite{myjump-proof} and provides
+the most clarity and insight.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.2\textwidth]{graphics/myjump2/jump-forces.png}
+	\caption{Analysis of a jump and data visualisation provided.}
+	\label{fig:myjump2-analysis}	
+\end{figure}
+The level of precision and insights provided are beyond the scope of our project, as we are focused
+on providing consistency first and foremost - thereby allowing our users to track their progress.
+This app estimates and visualises forces produced (\cref{fig:myjump2-analysis}), which is useful
+in the field of sport science but may not provide sufficient benefit to users for us to dedicated
+time to development of a similar feature.

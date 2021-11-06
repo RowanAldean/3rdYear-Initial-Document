@@ -15,3 +15,5 @@ summarise
 Emphasise
 personalise
 hangtime
+visualisation
+visualises
