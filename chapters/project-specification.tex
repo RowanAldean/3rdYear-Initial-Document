@@ -1,27 +1,177 @@
 \chapter{Project Specification}
 \label{chap:project-specification}
-
+\vspace{-10mm}
 \section{Feature specification}
+\label{sec:features}
+The following is a summary of the core features we aim to provide; these will help in 
+fulfilling the aims we set in \cref{chap:intro}.
+\begin{itemize}[noitemsep]
+    \item CRUD (Create, Read, Update, Delete) operations for a user account.
+    \item A vertical jump calculator, operating via video upload (\textit{not recording through the app}).
+    \begin{itemize}[nolistsep,noitemsep]
+        \item Core: Scrub through the video to set the takeoff/landing point.
+        \item Extra: Record video on the app (using the phone's camera).
+    \end{itemize}
+    \item Create a workout.
+    \begin{itemize}[nolistsep,noitemsep]
+        \item Core: From existing exercises.
+        \item Extra: From custom uploaded exercises.
+    \end{itemize} 
+    \item Subscribe to a preset workout.
+    \item A calendar for monitoring progress.
+    \item A ``traffic light system'' for monitoring consistency.
+    \item A means of communication with other users.
+    \begin{itemize}[nolistsep,noitemsep]
+        \item Potentially direct messaging or forum style messaging.
+    \end{itemize}
+    \item Provide video playback of exercises
+    \item Allow measurement via metric \& imperial units (primarily for US users).
+    \item Provide timer \& stopwatch functionality.
+    \item Provide push notification reminders for calendar scheduled workouts.
+    \item Provide notes functions for each workout.
+    \begin{itemize}[nolistsep,noitemsep]
+        \item Extra: Notes per exercise (allowing specific notes).
+    \end{itemize}
+\end{itemize}
+\pagebreak
+
 
 \section{Requirements}
 \label{sec:requirements}
+Using the above feature set (\cref{sec:features}), we can place features into functional requirements.
+Other additional requirements will make up our non-functional requirements.
+\vspace{-3mm}
 \subsection{Functional requirements}
+\begin{itemize}[noitemsep]
+    \item CRUD for a User account.
+    \item Upload video from storage.
+    \item Scrub through video and set takeoff/landing.
+    \item Calculate vertical jump in given units (metric or imperial).
+    \item Support video(s) at different frame rate(s).
+    \item Track vertical jump progress.
+    \item Add/remove a workout to or from a user's calendar.
+    \item Mark workouts as complete (with some visual feedback).
+    \item Make notes regarding a specific workout.
+    \item Provide push notification reminders at set duration(s) before a
+    workout.
+    \item Video playback from a source (embedded or from our own data storage).
+    \item Stopwatch \& timer must work correctly.
+    \item Simple chat/forum with other users.
+    \item Calendar available on dashboard.
+    \item Create a workout from existing exercises.
+\end{itemize}
 \subsection{Non-functional requirements}
+\begin{itemize}[noitemsep]
+    \item The app should be cross-platform (run on both iOS and Android).
+    \item Have a consistent margin of error (under fixed conditions), when measuring vertical jump.
+    \item Visualise workout consistency on user's dashboard.
+    \item Operate smoothly and provide a close-to-native experience. Users must not
+    feel delayed by the app if/when interviewed following usage.
+    \item Aid users workout experience (aside from the vertical jump calculator).
+    \item Be reliable (no unexpected data loss).
+\end{itemize}
+\pagebreak
 
 \section{Technology Stack \& Considerations}
 \subsection{Frontend technologies}
-\begin{itemize}[noitemsep]
-    \item Discuss flutter motivations
-    \item Discuss reasoning for/against
-\end{itemize}
-\subsection{Backend technologies}
-\begin{itemize}[noitemsep]
-    \item Discuss mongoDB motivations and advantages. Don't cover
-    specific design approach.
-    \item Discuss deployment and scalability.
-\end{itemize}
-\subsection{Security and deployment considerations}
-\begin{itemize}[noitemsep]
-    \item Emphasise this is hypothetical
-\end{itemize}
+Given that the app will be cross-platform there are
+a few largely accepted technologies for achieving this with a single codebase.
+Namely, WebView frameworks (such as Apache Cordova, Ionic, and PhoneGap),
+``React Native'' (created by Facebook) and ``Flutter'' (created by Google). 
+\par
+We'll be using \textbf{Flutter for the frontend} development for multiple reasons.
+Commonly, developers opt to use React Native due to its large
+community support - however in 2021, Flutter has a very similar ecosystem in my opinion.
+Furthermore, whilst React Native is not noticeably slower than Flutter (in many cases) there is a fundamental
+difference in how these software frameworks operate (and product native platform code from your high-level codebase).
+React Native uses a JavaScript bridge to communicate between native code modules; on the other hand,
+Flutter has native component availability by default - in practice the difference in performance is under
+a second (milliseconds) but it's a consideration that holds weight as complexity of a project grows.
+\par
+Flutter is written using Dart (a rarely used language that is predominantly only used for Flutter development).
+This is a stark change from JavaScript (used for React Native and more) which I have had previous experience with.
+\textit{The project} is an opportunity for me to expand my skill set and learn to work with Dart when using
+the Flutter framework - something which I have little experience with at present. Additionally,
+JavaScript will be used for \textit{the product} during deployment.
+\par
+The final reason worth mentioning is Flutter comes with out-of-the-box testing features
+as a framework - meaning there is less trouble finding a good workflow.
+All of this in addition to the plethora of default UI components and APIs\footnote{Application programming interface(s)} means
+that Flutter will be perfect for any form of iterative approach 
+to software development.
+\pagebreak
 
+\subsection{Backend technologies}
+For the backend data storage, \textbf{we'll be using MongoDB}
+- the most popular NoSQL database currently in use.
+In large part, this is being used as an opportunity for me
+to utilise NoSQL databases as part of a large project as well as
+learning to design NoSQL databases from scratch. Ordinarily
+developers are typically assigned to projects that have been set-up
+by other engineers thus they aren't typically involved in the
+architectural stages of system design - including the considerations made when creating database schema.
+\par
+Personal motivation aside, NoSQL databases are hugely beneficial in a variety of ways.
+Firstly, we have the ability to handle large amounts of data at high speeds.
+This is achieved using a ``scale-out architecture'' - this simply means that instead
+of relying on more computing power (as is the case in traditional ``scale-up architecture'')
+we can scale by adding nodes. Related to this is the removal of SQL; not only
+are we now avoiding potentially complex and inefficient queries but by
+remove the ``SQL magic'' developers can focus on elegant application solutions instead
+of spending precious development hours optimizing SQL queries for the database schema that
+is in use.
+\par
+From a data perspective, NoSQL means we can store all kinds of data
+structures (formally ``models'') instead of the SQL default tables, rows, columns.
+MongoDB supports all forms of raw, semi-structured and structured data; this can be as simple
+as binary data, to creating ``documents'' that represent highly structured data such as ``User accounts''
+with multiple references.
+\par
+Overall MongoDB is being used primarily due to it being the most popular NoSQL database and the inherent
+community support that coincides with this will be greatly beneficial during development.
+It's important to note that poor implementation of NoSQL databases
+can mean operating at shockingly slow speeds. Due to the nature of the flexibility and scalability
+involved with these databases they are also more susceptible to duplicate data - it is much more difficult
+to remove this redundancy than traditional relational models where we can follow a normalization process.
+Often traditional normalization makes use of joins, which are not easily executed using MongoDB
+and can easily lead to inferior code.
+\pagebreak
+
+\textbf{To expose the backend data for the apps to consume 
+we'll be using Express.js} - a backend web application
+framework for \textbf{Node.js} used in building APIs. Routing is simple and a fully functional
+basic API can be written in under 100 lines of code. This level of detail
+is not essential at this stage but noting our use of Express will hopefully
+help in rationalizing the more high-level decisions outlined above.
+\par
+Naturally, the technology stack used may include other middle layer
+technologies, but it's more than likely we focus our efforts on
+Flutter \& MongoDB before further decisions.
+For example, we may introduce a cache layer using Redis to optimize
+queries and make our product more efficient. This iterative behavior is natural in 
+software engineering and so there's an abundance of changes that can occur in our stack which will ease
+development. This doesn't mean radical changes to our simple Flutter-Express-Node stack
+but hopefully explains why it's difficult to document any packages and frameworks
+we intend to use without a thorough system design stage (often taking months).
+\vspace{-5mm}
+\subsection{Security and deployment considerations}
+The application backend will be hosted on the cloud using
+AWS (Amazon Web Services). This is easier to set up than
+self-hosting on dedicated servers and avoids the configuration needed to create
+a secure system. The costs are predictable based on the usage we see, and
+we can easily scale without having to invest in additional server hardware.
+AWS is more configurable than other major cloud providers
+but provides greater support versus IAC\footnote{Infrastructure-as-code}
+tools like Terraform.
+\par
+We also plan on using fastlane as the CD component of the CI/CD pipeline for deployment.
+GitHub Actions can also be used during growth stages before moving to a traditional
+CI/CD tool like Jenkins - which can also be integrated with many AWS services. 
+\par
+A note must be made that many of the above technology decisions are made with HR in mind.
+To explain this we must think further into the future; avoiding IAC means we're less likely
+to need to employ cloud infrastructure engineers (thus reducing costs) and using popular technologies means
+we won't struggle to find talent if needed. These decisions 
+are largely dependent on what happens with the product and whether the concept
+is proven as commercially viable, but that doesn't dismiss the need to account for factors
+such as employee churn as early as possible.
