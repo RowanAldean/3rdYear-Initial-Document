@@ -221,7 +221,7 @@
       {\large Submitted to \@awardinginst in partial fulfilment\\
       of the requirements for the Degree of \@degree}
 
-      \vspace{25mm}
+      \vspace{10mm}
      
       \@unilogo
 

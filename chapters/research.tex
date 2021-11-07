@@ -177,7 +177,7 @@ Both apps are also using some form of CDN to speed up content delivery, which is
 the tracking of food and exercise. MFP offers developers access to their data set via their own API \cite{mfp-api}.
 \par
 Whilst both apps calculate calories burned (an arguably useless metric for \textit{our project})
-during exercise. The scope and functionality of exercise is vastly different.
+during exercise, the scope and functionality of exercise is vastly different.
 Fitbit includes general sports and activities but no specific exercises (for example
 - ``weights'' is considered 1 exercise type and the calories burned are dependent on duration)
 and there is no ability
@@ -194,7 +194,7 @@ which can be taken alone or as a group. These challenges are a way to gamify the
 personal goals (such as using your phone less).
 \par
 Finally, both apps include community features - very similar to traditional social media platforms.
-These and other nutrition focused features are beyond the desired scope of \textit{our project} \todo[]{Internal link to requirements} thus we won't be
+These and other nutrition focused features are beyond the desired scope of \textit{our project} (\cref{chap:project-specification}) thus we won't be
 comparing and considering these.
 \par
 Overall, the fitness aspect of MFP seems more useful, but there are elements of the app which are not yet
@@ -204,20 +204,19 @@ That said, the UX/UI of MFP is more usable and the app has fewer features locked
 the barcode scanning components. A combination of elements from both apps will be paramount to a successful project.
 \par
 
-\textit{The project} 
-\todo[color=green]{reference prelim work}
-is planned to have a side panel menu and similar minimal aesthetic to that of MFP.
+\textit{The project} is planned to have a side panel 
+menu and similar minimal aesthetic to that of MFP (\cref{sec:UI-design}).
 It's not planned that it will include the calories burned estimates; however other metrics will be included in similar vain, such
 as total time trained and cumulative weight lifted/cumulative distance travelled. Calorie estimates will be an enhancement (additional feature) where time permits.
-The abilities to create custom routines and follow preset routines that are featured in MFP and Fitbit respectively,
-are expected to be important features in \textit{the project}. Albeit, the long term plan for
-things includes the ability for trainers to set these programmes as opposed to presets alone. 
+The abilities to create custom routines and follow preset routines, which are featured in MFP and Fitbit respectively,
+are expected to be important features in \textit{the project}. Albeit, the long term plan
+is to support the ability for trainers to set these programmes as opposed to presets alone. 
 \par
 In summary, the design
 and layout of these apps is what's useful for us - inspiration and additional features can also be drawn
 from these existing systems. With that said, \textit{our product} is not a nutrition tracker and focusing
-on elements in this space would shift the scope of the \textit{project} substantially. An extensive
-breakdown of the feature set can be found in \cref{chap:project-specification}.\todo[color=yellow]{reference feature set}
+on elements in this space would shift the scope of the \textit{project} substantially (\cref{risk:mitigation-scope}). An extensive
+breakdown of the feature set can be found in \cref{sec:features}.
 \pagebreak
 \subsection{TrueCoach}
 TrueCoach provide a cross-platform system that includes a web application.
@@ -377,7 +376,7 @@ some use of open-source packages for specific needs - such as confetti in TrueCo
 Both apps also make use of Firebase messaging for push notifications. This is easily implemented
 and simplifies the implementation of push notifications across platforms (Android/iOS). This is noteworthy for
 the development of our project and will prove useful if Firebase is used instead of or alongside the technologies outlined
-in \cref{chap:project-specification}\todo[color=purple]{tech stack reference here}. Our application frontend will be built
+in \cref{sec:tech-stack}. Our application frontend will be built
 using Flutter. The reasoning for this will be outlined further in the document, but performance is not expected to be adversely affected.
 Whilst the technology will be different the functionality and user experience aims to be similar to that of both apps.
 \par
@@ -392,10 +391,11 @@ on a trainer/administrator supporting you throughout your programme. Furthermore
 TrueCoach allows for the measurement of set metrics (by the trainer) and goals to surpass.
 The PJF app lacks these features but does allow for further planning in the form of a calendar view and 
 a ``traffic-light system'' for workouts on a daily basis. A red circle appears under missed workouts
-on the calendar, amber for pending workouts for the day and green workouts for completed workouts. TrueCoach
+on the calendar, amber for pending workouts for the day and green for completed workouts. TrueCoach
 has personal goals but no extensive calendar view and there is a simple ``mark as completed'' feature
-for scheduled workouts. Both of these elements are planned to be included on our project; looking at the preliminary
-prototype \todo[]{reference prototype} and feature set \todo[]{reference feature set} should provide more clarity on how this will be achieved.
+for scheduled workouts. We plan for both of these elements
+to be included in our project; looking at the preliminary
+prototype (\cref{fig:prototype}) and feature set (\cref{sec:features}) should provide more clarity on how this will be achieved.
 \par
 The final difference I consider notable between the apps is the use of timers. TrueCoach makes use of both
 a stopwatch and a timer for users to utilise during exercises. Alternatively, PJF includes a rest timer

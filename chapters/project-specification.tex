@@ -73,7 +73,10 @@ Other additional requirements will make up our non-functional requirements.
 \pagebreak
 
 \section{Technology Stack \& Considerations}
+\label{sec:tech-stack}
+\vspace{-3mm}
 \subsection{Frontend technologies}
+\vspace{-3mm}
 Given that the app will be cross-platform there are
 a few largely accepted technologies for achieving this with a single codebase.
 Namely, WebView frameworks (such as Apache Cordova, Ionic, and PhoneGap),
@@ -99,7 +102,14 @@ as a framework - meaning there is less trouble finding a good workflow.
 All of this in addition to the plethora of default UI components and APIs\footnote{Application programming interface(s)} means
 that Flutter will be perfect for any form of iterative approach 
 to software development.
-\pagebreak
+\par
+Avoiding writing native code means we can use 1 single codebase and 
+easily satisfies our aims of providing a hybrid mobile application.
+Avoiding WebView frameworks is primarily due to their functionality being noticeably
+weak and difficult to scale, given that they are rendering HTML, CSS 
+and JavaScript in what is essentially a browser window. The application would function,
+but not smoothly as stress accumulates when dealing with increasingly large
+volumes of workout and application data.
 
 \subsection{Backend technologies}
 For the backend data storage, \textbf{we'll be using MongoDB}
@@ -117,14 +127,14 @@ This is achieved using a ``scale-out architecture'' - this simply means that ins
 of relying on more computing power (as is the case in traditional ``scale-up architecture'')
 we can scale by adding nodes. Related to this is the removal of SQL; not only
 are we now avoiding potentially complex and inefficient queries but by
-remove the ``SQL magic'' developers can focus on elegant application solutions instead
+removing the ``SQL magic'' developers can focus on elegant application solutions instead
 of spending precious development hours optimizing SQL queries for the database schema that
 is in use.
 \par
 From a data perspective, NoSQL means we can store all kinds of data
-structures (formally ``models'') instead of the SQL default tables, rows, columns.
+structures (known formally as ``models'') instead of the SQL default - tables, rows, columns.
 MongoDB supports all forms of raw, semi-structured and structured data; this can be as simple
-as binary data, to creating ``documents'' that represent highly structured data such as ``User accounts''
+as binary data, or creating ``documents'' that represent highly structured data such as ``User accounts''
 with multiple references.
 \par
 Overall MongoDB is being used primarily due to it being the most popular NoSQL database and the inherent
@@ -146,8 +156,8 @@ help in rationalizing the more high-level decisions outlined above.
 \par
 Naturally, the technology stack used may include other middle layer
 technologies, but it's more than likely we focus our efforts on
-Flutter \& MongoDB before further decisions.
-For example, we may introduce a cache layer using Redis to optimize
+Flutter \& MongoDB before making further decisions -
+for example, we may introduce a cache layer using Redis to optimize
 queries and make our product more efficient. This iterative behavior is natural in 
 software engineering and so there's an abundance of changes that can occur in our stack which will ease
 development. This doesn't mean radical changes to our simple Flutter-Express-Node stack
